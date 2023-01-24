@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,12 +55,14 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.MyView
             }
         }, 5000);
 
+        // Setting on item Click Listner
+
     }
     @Override
     public int getItemCount() {
         return arrayList.size();
     }
-    public class MyView extends RecyclerView.ViewHolder{
+    public class MyView extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView imageView;
         public ShimmerFrameLayout shimmerFrameLayout;
         public ImageView shimmer_imageview;
@@ -69,6 +72,15 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.MyView
             shimmerFrameLayout = itemView.findViewById(R.id.trending_list_shimmer_container);
             shimmer_imageview = itemView.findViewById(R.id.iv_trending_shimmer);
 
+
+            // Setting on item Click Listner
+            imageView.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View view) {
+            Toast.makeText(context.getApplicationContext(), "Item clicked", Toast.LENGTH_LONG).show();
         }
     }
 }
